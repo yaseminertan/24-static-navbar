@@ -35,20 +35,18 @@
 <script>
     const navbar=document.querySelector('#navbar');
     let navTop=0;
-    
     window.addEventListener('scroll',getScroll);
-    
-    console.log(navTop);
+
     function getScroll(){
-      if (navTop == 0) navTop= navbar.offsetTop;
-        console.log(navTop);
-        if (navTop<=this.scrollY)
-        {
-            document.body.classList.add('static');
-            document.body.style.paddingTop=navbar.offsetHeight;
-        }
-        else
-            document.body.classList.remove('static');
+      //if (navTop == 0) navTop= navbar.offsetTop;
+      navTop = navTop == 0 ? navbar.offsetTop : navTop;
+    if (navTop<=this.scrollY)
+    {
+        document.body.classList.add('static');
+        document.body.style.paddingTop=navbar.offsetHeight;
+    }
+    else
+        document.body.classList.remove('static');
     }
 </script>
 
