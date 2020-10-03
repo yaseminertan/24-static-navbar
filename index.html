@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav id="main">
+    <nav id="navbar">
         <ul>
           <li class="logo"><a href="#">LOST.</a></li>
           <li><a href="#">Home</a></li>
@@ -33,12 +33,37 @@
 </html>
 
 <script>
-
-
+    const navbar=document.querySelector('#navbar');
+    let navTop=0;
+    
+    window.addEventListener('scroll',getScroll);
+    
+    console.log(navTop);
+    function getScroll(){
+      if (navTop == 0) navTop= navbar.offsetTop;
+        console.log(navTop);
+        if (navTop<=this.scrollY)
+        {
+            document.body.classList.add('static');
+            document.body.style.paddingTop=navbar.offsetHeight;
+        }
+        else
+            document.body.classList.remove('static');
+    }
 </script>
 
 <style>
-    .site-wrap {
+
+head {
+  text-align: center;
+  height: 50vh;
+  background: url(https://source.unsplash.com/GKN6rpDr0EI/960x640) bottom center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.site-wrap {
   max-width: 700px;
   margin: 70px auto;
   background: white;
@@ -82,6 +107,9 @@ li.logo {
 }
 li.logo a {
   color: black;
+}
+.static nav{
+    position: fixed;
 }
 
 </style>
